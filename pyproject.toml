@@ -1,0 +1,17 @@
+[tool.poetry]
+name = "rosenblatt-sample"
+version = "0.1.0"
+description = "Dataset con ejemplos del experimento de Frank Rosenblatt"
+authors = ["Juan Manuel Schillaci <jmschillaci@gmail.com>"]
+readme = "README.md"
+packages = [{include = "rosenblatt_sample"}]
+
+[tool.poetry.dependencies]
+python = "^3.8,<3.11"
+tensorflow = "^2.13.0"
+pillow-pil = "^0.1.dev0"
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
