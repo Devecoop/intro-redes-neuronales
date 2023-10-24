@@ -2,8 +2,10 @@ from PIL import Image, ImageDraw
 import random
 import os
 
+from tensorflow import square
+
 IMAGE_SIDE_SIZE = 38
-NUM_IMAGES = 100
+NUM_IMAGES = 1000
 
 
 def generate_image(size, square_size, position_x, position_y):
@@ -38,19 +40,19 @@ def main():
     size = (IMAGE_SIDE_SIZE, IMAGE_SIDE_SIZE)
     left_images = right_images = NUM_IMAGES // 2
 
-    for i in range(left_images):
-        square_size = random.randint(1, 10)
-        position_x = random.randint(0, (IMAGE_SIDE_SIZE//2) - 1 - square_size)  # Generar posición para X del lado izquierdo
-        position_y = random.randint(0, IMAGE_SIDE_SIZE - 1 - square_size)  # Generar posición Y
-        image = generate_image(size, square_size, position_x, position_y)
-        image.save(os.path.join(left_dir_path, f"{i + 1}.png"))
+    for square_size in range(1,11):
+        for i in range(left_images//10):
+            position_x = random.randint(0, (IMAGE_SIDE_SIZE//2) - 1 - square_size)  # Generar posición para X del lado izquierdo
+            position_y = random.randint(0, IMAGE_SIDE_SIZE - 1 - square_size)  # Generar posición Y
+            image = generate_image(size, square_size, position_x, position_y)
+            image.save(os.path.join(left_dir_path, f"{square_size}_{i + 1}.png"))
 
-    for i in range(right_images):
-        square_size = random.randint(1, 10)
-        position_x = random.randint(19, IMAGE_SIDE_SIZE - 1 - square_size)  # Generar posición X del lado derecho
-        position_y = random.randint(0, IMAGE_SIDE_SIZE - 1  - square_size)  # Generar posición Y
-        image = generate_image(size, square_size, position_x, position_y)
-        image.save(os.path.join(right_dir_path, f"{i + 1}.png"))
+    for square_size in range(1,11):
+        for i in range(right_images//10):
+            position_x = random.randint(19, IMAGE_SIDE_SIZE - 1 - square_size)  # Generar posición X del lado derecho
+            position_y = random.randint(0, IMAGE_SIDE_SIZE - 1  - square_size)  # Generar posición Y
+            image = generate_image(size, square_size, position_x, position_y)
+            image.save(os.path.join(right_dir_path, f"{square_size}_{i + 1}.png"))
 
 if __name__ == "__main__":
     main()

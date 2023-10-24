@@ -7,7 +7,7 @@ readme = "README.md"
 packages = [{include = "rosenblatt_sample"}]
 
 [tool.poetry.dependencies]
-python = "^3.8,<3.11"
+python = "^3.8,<3.11.6"
 tensorflow = "^2.13.0"
 pillow-pil = "^0.1.dev0"
 

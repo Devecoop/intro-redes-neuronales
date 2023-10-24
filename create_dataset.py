@@ -6,6 +6,7 @@ directorio_imagenes = 'generated_images'
 # Crear el dataset a partir del directorio de imágenes
 dataset = tf.keras.preprocessing.image_dataset_from_directory(directorio_imagenes, 
                                                               image_size=(38, 38),
+                                                              batch_size=None,
                                                               color_mode='grayscale',
                                                               label_mode='binary', 
                                                               labels='inferred')
